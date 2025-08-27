@@ -1,0 +1,23 @@
+name: Weekly Load Test
+
+on:
+  schedule:
+    - cron: "*/3 * * * *"
+
+jobs:
+  load-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Gatling
+        run: |
+          sudo apt-get update
+          sudo apt-get install default-jre -y
+          curl -sSL https://repo1.maven.org/maven2/io/gatling/highcharts/gatling-charts-highcharts-bundle/3.9.5/gatling-charts-highcharts-bundle-3.9.5-bundle.zip -o gatling.zip
+          unzip gatling.zip -d $HOME
+          mv $HOME/gatling-charts-highcharts-bundle-* $HOME/gatling
+          echo "$HOME/gatling/bin" >> $GITHUB_PATH
+
+      - name: Run Gatling Load Test
+        run: gatling.sh -s load.testSimulation.gatling.js -rf ./gatling-results
