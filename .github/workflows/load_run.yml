@@ -20,4 +20,4 @@ jobs:
           echo "$HOME/gatling/bin" >> $GITHUB_PATH
 
       - name: Run Gatling Load Test
-        run: gatling.sh -s load.testSimulation.gatling.js -rf ./gatling-results
+        run: gatling.sh -s load.testSimulation -rf ./gatling-results
