@@ -1,4 +1,4 @@
-name: Weekly Load Test
+name: Load test
 
 on:
   workflow_dispatch:
@@ -21,4 +21,4 @@ jobs:
           echo "$HOME/gatling/bin" >> $GITHUB_PATH
 
       - name: Run Gatling Load Test
-        run: gatling.sh -s load.testSimulation -rf ./gatling-results
+        run: gatling.sh -s load.testSimulation -rf ./gatling-results --run-local
