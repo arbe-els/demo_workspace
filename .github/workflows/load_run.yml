@@ -15,8 +15,8 @@ jobs:
         run: |
           curl -sSL -o gatling-bundle-3.9.5.zip https://repo1.maven.org/maven2/io/gatling/gatling-bundle/3.9.5/gatling-bundle-3.9.5-bundle.zip
           unzip gatling-bundle-3.9.5.zip -d $HOME
-          mv $HOME/gatling-bundle-oss-* $HOME/gatling
+          mv $HOME/gatling-bundle-3.9.5* $HOME/gatling
           echo "$HOME/gatling/bin" >> $GITHUB_PATH
 
       - name: Run Gatling Load Test
-        run: gatling.sh -s load.testSimulation -rf ./gatling-results
+        run: $HOME/gatling/bin/gatling.sh -s load.testSimulation -rf ./gatling-results
