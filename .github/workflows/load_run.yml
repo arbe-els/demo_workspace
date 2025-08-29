@@ -3,7 +3,7 @@ name: Load test
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/6 * * * *"
+    - cron: "0 5 11 * *"
 
 jobs:
   load-tests:
